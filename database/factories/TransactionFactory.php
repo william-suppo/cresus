@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Record;
+use App\Models\Transaction;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RecordFactory extends Factory
+class TransactionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Record::class;
+    protected $model = Transaction::class;
 
     /**
      * Define the model's default state.

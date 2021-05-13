@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class RecordSeeder extends Seeder
+class TransactionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class RecordSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Record::factory(200)->create();
+        \App\Models\Transaction::factory(200)->create();
     }
 }
