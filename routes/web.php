@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('records', [\App\Http\Controllers\TransactionController::class, 'index'])->name('records.index');
