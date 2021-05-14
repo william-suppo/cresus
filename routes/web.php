@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('records', [\App\Http\Controllers\TransactionController::class, 'index'])->name('records.index');
+Route::get('transactions', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transactions.index');
+Route::get('ajax/transactions', [\App\Http\Controllers\TransactionController::class, 'getTransactions']);

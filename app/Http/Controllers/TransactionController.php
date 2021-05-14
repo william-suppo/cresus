@@ -14,9 +14,12 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::limit(30)->get();
+        return view('transactions.index');
+    }
 
-        return view('transactions.index', ['transactions' => $transactions]);
+    public function getTransactions()
+    {
+        return Transaction::with(['debitAccount', 'creditAccount'])->limit(30)->get();
     }
 
     /**
