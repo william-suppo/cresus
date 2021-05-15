@@ -1,0 +1,41 @@
+version: '3'
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  mysql:
+    driver: local
+
+services:
+  app:
+    image: 'devmakerlab/php-fpm:1.0-dev'
+    user: '${UID}'
+
+    networks:
+      - app
+    volumes:
+      - '.:/var/www'
+
+  nginx:
+    ports:
+      - ${APP_PORT:-80}:80
+    image: 'devmakerlab/nginx:1.0'
+    networks:
+      - app
+    volumes:
+      - './public:/var/www/public'
+
+  mysql:
+    image: 'mysql:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - app
+    volumes:
+      - 'mysql:/var/lib/mysql'
