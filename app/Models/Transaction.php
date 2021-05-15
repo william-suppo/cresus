@@ -13,6 +13,10 @@ class Transaction extends Model
         'label', 'amount', 'effected_at', 'debit_account_id', 'credit_account_id',
     ];
 
+    public $dates = [
+        'effected_at',
+    ];
+
     public function debitAccount()
     {
         return $this->belongsTo(Account::class, 'debit_account_id');
