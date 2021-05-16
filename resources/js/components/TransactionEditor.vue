@@ -128,10 +128,6 @@ export default {
                 });
         },
 
-        edit: function (transaction) {
-            this.showModal(transaction);
-        },
-
         save: function () {
             let id = this.modal.transaction.id;
             let method = id ? 'put' : 'post';
@@ -139,7 +135,10 @@ export default {
 
             axios[method](endpoint, this.modal.transaction)
                 .then(response => {
-                    this.transactions.unshift(response.data.data);
+                    if (! id) {
+                        this.transactions.unshift(response.data.data);
+                    }
+
                     this.hideModal();
                 });
         },
@@ -152,12 +151,12 @@ export default {
                 });
         },
 
-        showModal: function(transaction = {}) {
+        showModal: function (transaction = {}) {
             this.modal.transaction = transaction;
             this.modal.visible = true;
         },
 
-        hideModal: function() {
+        hideModal: function () {
             this.modal.transaction = {};
             this.modal.visible = false;
         },

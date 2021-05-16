@@ -15,7 +15,7 @@ class TransactionController extends Controller
         return TransactionResource::collection(Transaction::with(['debitAccount', 'creditAccount'])->limit(30)->orderByDesc('effected_at')->get());
     }
 
-    public function save(Request $request)
+    public function store(Request $request)
     {
         $debitAccount = Account::firstOrCreate(['name' => $request->get('debit_account_name')]);
         $creditAccount = Account::firstOrCreate(['name' => $request->get('credit_account_name')]);
@@ -31,6 +31,24 @@ class TransactionController extends Controller
         $transaction = Transaction::create($properties);
 
         return new TransactionResource($transaction);
+    }
+
+    public function update(Transaction $transaction, Request $request)
+    {
+        $debitAccount = Account::firstOrCreate(['name' => $request->get('debit_account_name')]);
+        $creditAccount = Account::firstOrCreate(['name' => $request->get('credit_account_name')]);
+
+        $properties = [
+            'effected_at' => $request->get('effected_at'),
+            'label' => $request->get('label'),
+            'amount' => $request->get('amount'),
+            'debit_account_id' => $debitAccount->id,
+            'credit_account_id' => $creditAccount->id,
+        ];
+
+        $transaction->update($properties);
+
+        return response()->noContent();
     }
 
     public function destroy(Transaction $transaction)
