@@ -133,19 +133,21 @@ export default {
         },
 
         save: function () {
-            if (this.modal.transaction.id !== undefined) {
-                axios.post('/ajax/transactions', this.modal.transaction)
-                    .then(response => {
-                        console.log(response);
-                        this.hideModal();
-                    });
-            }
+            let id = this.modal.transaction.id;
+            let method = id ? 'put' : 'post';
+            let endpoint = id ? '/ajax/transactions/' + id : '/ajax/transactions';
+
+            axios[method](endpoint, this.modal.transaction)
+                .then(response => {
+                    this.transactions.unshift(response.data.data);
+                    this.hideModal();
+                });
         },
 
         remove: function (id) {
             axios.delete('/ajax/transactions/' + id)
                 .then(response => {
-                    let index = this.transactions(transaction => transaction.id).indexOf(id);
+                    let index = this.transactions.map(transaction => transaction.id).indexOf(id);
                     this.$delete(this.transactions, index);
                 });
         },
