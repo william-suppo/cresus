@@ -100,6 +100,9 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="flex px-8 py-6 border-t border-gray-300 justify-center">
+                <button v-for="page in pages" :class="page.active ? 'bg-blue-500 text-white' : 'text-gray-500 hover:bg-gray-50'" class="first:rounded-l-md last:rounded-r-md bg-white border-gray-300 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium" v-html="page.label" @click="fetch(page)"></button>
+            </div>
         </div>
     </div>
 </template>
@@ -109,6 +112,7 @@ export default {
     data: function () {
         return {
             transactions: Array,
+            pages: Array,
             modal: {
                 transaction: {},
                 visible: false,
@@ -121,19 +125,22 @@ export default {
     },
 
     methods: {
-        fetch: function () {
-            axios.get('/ajax/transactions')
+        fetch: function (page = null) {
+            let url = page ? page.url : '/ajax/transactions';
+
+            axios.get(url)
                 .then(response => {
                     this.transactions = response.data.data;
+                    this.pages = response.data.meta.links;
                 });
         },
 
         save: function () {
             let id = this.modal.transaction.id;
             let method = id ? 'put' : 'post';
-            let endpoint = id ? '/ajax/transactions/' + id : '/ajax/transactions';
+            let url = id ? '/ajax/transactions/' + id : '/ajax/transactions';
 
-            axios[method](endpoint, this.modal.transaction)
+            axios[method](url, this.modal.transaction)
                 .then(response => {
                     if (! id) {
                         this.transactions.unshift(response.data.data);

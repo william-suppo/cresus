@@ -12,7 +12,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        return TransactionResource::collection(Transaction::with(['debitAccount', 'creditAccount'])->limit(30)->orderByDesc('effected_at')->get());
+        return TransactionResource::collection(Transaction::with(['debitAccount', 'creditAccount'])->orderByDesc('effected_at')->paginate(50));
     }
 
     public function store(Request $request)
