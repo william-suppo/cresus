@@ -1,0 +1,39 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+volumes:
+  mysql:
+    driver: local
+
+services:
+  app:
+    labels:
+      - "traefik.enable=false"
+
+  nginx:
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.cresus-http.rule=Host(`${APP_HOST}`)"
+      - "traefik.http.routers.cresus-http.entrypoints=http"
+      - "traefik.http.routers.cresus-http.middlewares=https-redirect@docker"
+
+      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
+
+      - "traefik.http.routers.cresus-https.entrypoints=https"
+      - "traefik.http.routers.cresus-https.rule=Host(`${APP_HOST}`)"
+      - "traefik.http.routers.cresus-https.tls=true"
+      - "traefik.http.routers.cresus-https.tls.certresolver=letsencrypt"
+
+  mysql:
+    volumes:
+      - 'mysql:/var/lib/mysql'
+
+    labels:
+      - "traefik.enable=false"
