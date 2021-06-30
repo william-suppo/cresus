@@ -147,7 +147,7 @@ export default {
                         this.transactions.unshift(response.data.data);
                     }
 
-                    this.submitModal();
+                    this.closeModal();
                 });
         },
 
@@ -172,7 +172,7 @@ export default {
             this.modal.visible = false;
         },
 
-        submitModal: function () {
+        closeModal: function () {
             this.modal.transaction = {};
             this.modal.visible = false;
         },
