@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
+
 Route::get('transactions', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transactions.index');
 
 Route::get('ajax/transactions', [\App\Http\Controllers\Ajax\TransactionController::class, 'index']);
