@@ -159,7 +159,7 @@ export default {
         },
 
         showModal: function (transaction = {}) {
-            this.modal.transaction = transaction;
+            this.modal.transaction = JSON.parse(JSON.stringify(transaction));//Object.assign({}, transaction);
             this.modal.visible = true;
         },
 
