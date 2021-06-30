@@ -131,7 +131,10 @@ export default {
 
             axios.get(url)
                 .then(response => {
-                    this.transactions = response.data.data;
+                    this.transactions = _.orderBy(response.data.data, function (transaction) {
+                        return new Date(transaction.effected_at);
+                    }, 'desc');
+
                     this.pages = response.data.meta.links;
                 });
         },
@@ -147,7 +150,12 @@ export default {
                         this.transactions.unshift(response.data.data);
                     }
 
-                    this.closeModal();
+                    this.transactions = _.orderBy(this.transactions, function (transaction) {
+                        return new Date(transaction.effected_at);
+                    }, 'desc');
+
+                    this.modal.transaction = {};
+                    this.modal.visible = false;
                 });
         },
 
@@ -168,11 +176,6 @@ export default {
         cancelModal: function () {
             Object.assign(this.modal.transaction, this.modal.backupTransaction)
             this.modal.backupTransaction = {};
-            this.modal.transaction = {};
-            this.modal.visible = false;
-        },
-
-        closeModal: function () {
             this.modal.transaction = {};
             this.modal.visible = false;
         },
