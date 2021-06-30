@@ -9,7 +9,7 @@
                         <h3 class="text-3xl font-semibold">
                             Edit transaction
                         </h3>
-                        <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" @click="hideModal()">
+                        <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" @click="cancelModal()">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
@@ -115,6 +115,7 @@ export default {
             pages: Array,
             modal: {
                 transaction: {},
+                backupTransaction: {},
                 visible: false,
             },
         }
@@ -146,7 +147,7 @@ export default {
                         this.transactions.unshift(response.data.data);
                     }
 
-                    this.hideModal();
+                    this.submitModal();
                 });
         },
 
@@ -159,11 +160,19 @@ export default {
         },
 
         showModal: function (transaction = {}) {
-            this.modal.transaction = JSON.parse(JSON.stringify(transaction));//Object.assign({}, transaction);
+            this.modal.backupTransaction = Object.assign({}, transaction);
+            this.modal.transaction = transaction;
             this.modal.visible = true;
         },
 
-        hideModal: function () {
+        cancelModal: function () {
+            Object.assign(this.modal.transaction, this.modal.backupTransaction)
+            this.modal.backupTransaction = {};
+            this.modal.transaction = {};
+            this.modal.visible = false;
+        },
+
+        submitModal: function () {
             this.modal.transaction = {};
             this.modal.visible = false;
         },
