@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 class AggregateEntity
 {
-    public function __construct(protected Collection $accounts) {}
+    public function __construct(public Collection $accounts) {}
 
     public function subAmountForAccount(string $name, int $month, float $amount): void
     {

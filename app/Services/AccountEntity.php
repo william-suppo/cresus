@@ -10,4 +10,9 @@ class AccountEntity
     {
         $this->amounts = array_fill(0, 12, 0);
     }
+
+    public function getSum(): float
+    {
+        return array_sum($this->amounts);
+    }
 }

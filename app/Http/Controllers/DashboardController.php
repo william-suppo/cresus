@@ -12,5 +12,7 @@ class DashboardController extends Controller
     public function index()
     {
         $aggregate = $this->aggregator->getByYear(date('Y'));
+
+        return view('dashboard.index', compact('aggregate'));
     }
 }
