@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::where(['email' => 'user@example.net'])->firstOr(function () {
-            return User::factory()->create(['email' => 'user@example.net', 'active' => true]);
+            return User::factory()->create(['email' => 'user@example.net']);
         });
     }
 }
