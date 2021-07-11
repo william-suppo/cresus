@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1 class="text-3xl font-extrabold text-blue-900 mb-6">Transactions list</h1>
+        <h1 class="text-3xl font-extrabold text-primary mb-6">Transactions list</h1>
 
         <div v-if="modal.visible" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center">
             <div class="relative w-auto my-6 mx-auto max-w-3xl">
                 <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                     <div class="flex items-start justify-between p-5 border-b rounded-t">
-                        <h3 class="text-3xl font-semibold">
+                        <h3 class="text-3xl font-semibold text-primary">
                             Edit transaction
                         </h3>
                         <button class="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none" @click="cancelModal()">
@@ -58,7 +58,7 @@
 
         <div class="mb-2 bg-white rounded shadow">
             <div class="flex items-center justify-between px-8 py-6">
-                <h3 class="font-bold uppercase text-gray-700">
+                <h3 class="font-bold uppercase text-primary">
                     Transactions order by most recent date
                 </h3>
                 <button class="float-right bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none leading-tight shadow text-white font-bold p-2 rounded" @click="showModal()">
