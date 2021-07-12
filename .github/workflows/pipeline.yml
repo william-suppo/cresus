@@ -44,9 +44,7 @@ jobs:
           npm install
           npm run prod
       - name: Set env file
-        run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
-          cat .env
+        run: echo "${{ secrets.ENV_FILE }}" > .env
       - name: Config ssh
         run: |
           eval $(ssh-agent -s)
@@ -54,3 +52,11 @@ jobs:
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+      - name: Sync files on server
+        run: |
+          rsync -az --delete --delete-excluded --chmod=D755,F644 --exclude "node_modules" --exclude ".git*" "$PWD"/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.WORKDIR }}/
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chmod 777 ${{ secrets.WORKDIR }}/bootstrap/cache"
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chmod 777 ${{ secrets.WORKDIR }}/storage/logs"
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chmod 777 ${{ secrets.WORKDIR }}/storage/framework/cache"
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chmod 777 ${{ secrets.WORKDIR }}/storage/framework/sessions"
+          ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "chmod 777 ${{ secrets.WORKDIR }}/storage/framework/views"
