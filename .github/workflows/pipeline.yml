@@ -54,6 +54,7 @@ jobs:
           echo "IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
           echo "StrictHostKeyChecking no" >> ~/.ssh/config
           chmod 700 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa
       - name: Sync files on server
         run: |
           rsync -az --delete --delete-excluded --chmod=D755,F644 --exclude "node_modules" --exclude ".git*" "$PWD"/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.WORKDIR }}/
