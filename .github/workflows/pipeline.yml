@@ -43,3 +43,10 @@ jobs:
         run: |
           npm install
           npm run prod
+      - name: Config ssh
+        run: |
+          eval $(ssh-agent -s)
+          ssh-add <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
