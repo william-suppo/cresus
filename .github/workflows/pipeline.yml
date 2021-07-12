@@ -41,11 +41,10 @@ jobs:
 
   tests:
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - uses: actions/checkout@v2
-      - name: Execute tests
-        run: php vendor/bin/phpunit
       - name: Download vendor
         uses: actions/download-artifact@v1
         with:
@@ -56,3 +55,5 @@ jobs:
         with:
           name: assets
           path: public
+      - name: Execute tests
+        run: php vendor/bin/phpunit
