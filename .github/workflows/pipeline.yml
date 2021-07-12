@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,11 +20,21 @@ jobs:
           php-version: '8.0'
       - name: Install composer dependencies
         run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-      - name: Upload vendor
-        uses: actions/upload-artifact@v2
+      - name: Execute tests
+        run: php vendor/bin/phpunit
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set PHP version
+        uses: shivammathur/setup-php@v2
         with:
-          name: vendor
-          path: vendor
+          php-version: '8.0'
+      - name: Install composer dependencies
+        run: composer install --quiet --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Setup Nodejs
         uses: actions/setup-node@v2
         with:
@@ -33,27 +43,3 @@ jobs:
         run: |
           npm install
           npm run prod
-      - name: Upload assets
-        uses: actions/upload-artifact@v2
-        with:
-          name: assets
-          path: public
-
-  tests:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Download vendor
-        uses: actions/download-artifact@v1
-        with:
-          name: vendor
-          path: vendor
-      - name: Download assets
-        uses: actions/download-artifact@v1
-        with:
-          name: assets
-          path: public
-      - name: Execute tests
-        run: php vendor/bin/phpunit
