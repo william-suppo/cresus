@@ -43,6 +43,10 @@ jobs:
         run: |
           npm install
           npm run prod
+      - name: Set env file
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+          cat .env
       - name: Config ssh
         run: |
           eval $(ssh-agent -s)
