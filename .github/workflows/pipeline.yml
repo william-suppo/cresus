@@ -46,12 +46,14 @@ jobs:
       - name: Set env file
         run: echo "${{ secrets.ENV_FILE }}" > .env
       - name: Config ssh
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          eval $(ssh-agent -s)
-          ssh-add <(echo "${{ secrets.SSH_PRIVATE_KEY }}")
           mkdir -p ~/.ssh
+          echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+          echo "IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
+          echo "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
           chmod 700 ~/.ssh
-          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
       - name: Sync files on server
         run: |
           rsync -az --delete --delete-excluded --chmod=D755,F644 --exclude "node_modules" --exclude ".git*" "$PWD"/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.WORKDIR }}/
