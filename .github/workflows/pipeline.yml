@@ -52,7 +52,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
           echo "IdentityFile ~/.ssh/id_rsa" >> ~/.ssh/config
-          echo "Host *\n\tStrictHostKeyChecking no\n\n" >> ~/.ssh/config
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
           chmod 700 ~/.ssh
       - name: Sync files on server
         run: |
