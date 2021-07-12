@@ -25,10 +25,11 @@ jobs:
         with:
           name: vendor
           path: vendor
-      - name: Build assets
+      - name: Setup Nodejs
         uses: actions/setup-node@v2
         with:
           node-version: '15'
+      - name: Build assets
         run: |
           npm install
           npm run prod
