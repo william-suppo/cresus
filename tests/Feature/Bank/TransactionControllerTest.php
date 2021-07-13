@@ -24,7 +24,7 @@ class TransactionControllerTest extends TestCase
 
         $response->assertSuccessful();
 
-        $response = $this->actingAs($user)->getJson('/ajax/transactions');
+        $response = $this->actingAs($user)->getJson('/transactions/getAllPaginate');
 
         $response
             ->assertSuccessful()
@@ -41,7 +41,7 @@ class TransactionControllerTest extends TestCase
 
         $response->assertRedirect('/');
 
-        $response = $this->getJson('/ajax/transactions');
+        $response = $this->getJson('/transactions/getAllPaginate');
 
         $response->assertUnauthorized();
     }
@@ -51,7 +51,7 @@ class TransactionControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->postJson('/ajax/transactions', [
+        $response = $this->actingAs($user)->postJson('/transactions', [
             'label' => 'HAPPY NEW YEAR',
             'effected_at' => '2021-01-01',
             'amount' => 2021,
@@ -85,7 +85,7 @@ class TransactionControllerTest extends TestCase
     /** @test */
     public function guest_cant_create_transaction()
     {
-        $response = $this->postJson('/ajax/transactions', [
+        $response = $this->postJson('/transactions', [
             'label' => 'H4CK3R',
             'effected_at' => '2021-01-01',
             'amount' => 100000,
@@ -112,7 +112,7 @@ class TransactionControllerTest extends TestCase
         ]);
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->putJson('/ajax/transactions/' . $transaction->id, [
+        $response = $this->actingAs($user)->putJson('/transactions/' . $transaction->id, [
             'effected_at' => '2021-01-01',
             'label' => '****',
             'amount' => 2021,
@@ -136,7 +136,7 @@ class TransactionControllerTest extends TestCase
         Account::factory(2)->create();
         $transaction = Transaction::factory()->create();
 
-        $response = $this->putJson('/ajax/transactions/' . $transaction->id, [
+        $response = $this->putJson('/transactions/' . $transaction->id, [
             'label' => 'H4CK3R',
             'effected_at' => '2021-01-01',
             'amount' => 100000,
@@ -154,7 +154,7 @@ class TransactionControllerTest extends TestCase
         $transaction = Transaction::factory()->create();
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->deleteJson('/ajax/transactions/' . $transaction->id);
+        $response = $this->actingAs($user)->deleteJson('/transactions/' . $transaction->id);
 
         $response->assertSuccessful();
 
@@ -167,7 +167,7 @@ class TransactionControllerTest extends TestCase
         Account::factory(2)->create();
         $transaction = Transaction::factory()->create();
 
-        $response = $this->deleteJson('/ajax/transactions/' . $transaction->id);
+        $response = $this->deleteJson('/transactions/' . $transaction->id);
 
         $response->assertUnauthorized();
     }

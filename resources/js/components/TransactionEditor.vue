@@ -127,7 +127,7 @@ export default {
 
     methods: {
         fetch: function (page = null) {
-            let url = page ? page.url : '/ajax/transactions';
+            let url = page ? page.url : '/transactions/getAllPaginate';
 
             axios.get(url)
                 .then(response => {
@@ -142,7 +142,7 @@ export default {
         save: function () {
             let id = this.modal.transaction.id;
             let method = id ? 'put' : 'post';
-            let url = id ? '/ajax/transactions/' + id : '/ajax/transactions';
+            let url = id ? '/transactions/' + id : '/transactions';
 
             axios[method](url, this.modal.transaction)
                 .then(response => {
@@ -160,7 +160,7 @@ export default {
         },
 
         remove: function (id) {
-            axios.delete('/ajax/transactions/' + id)
+            axios.delete('/transactions/' + id)
                 .then(response => {
                     let index = this.transactions.map(transaction => transaction.id).indexOf(id);
                     this.$delete(this.transactions, index);
