@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\AuthenticatedSessionController::class, 'loginForm'])
+Route::get('/', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'loginForm'])
     ->middleware('guest')
     ->name('login');
 
