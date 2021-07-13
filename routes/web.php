@@ -17,18 +17,18 @@ Route::get('/', [\App\Http\Controllers\AuthenticatedSessionController::class, 'l
     ->middleware('guest')
     ->name('login');
 
-Route::post('login', [App\Http\Controllers\AuthenticatedSessionController::class, 'login'])
+Route::post('login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'login'])
     ->middleware('guest');
 
-Route::post('logout', [App\Http\Controllers\AuthenticatedSessionController::class, 'logout'])
+Route::post('logout', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
 Route::group(['middleware' => 'auth'],  function () {
-    Route::get('transactions', [\App\Http\Controllers\TransactionController::class, 'index'])->name('transactions.index');
+    Route::get('transactions', [\App\Http\Controllers\Bank\TransactionController::class, 'index'])->name('transactions.index');
 
-    Route::get('ajax/transactions', [\App\Http\Controllers\Ajax\TransactionController::class, 'index']);
-    Route::post('ajax/transactions', [\App\Http\Controllers\Ajax\TransactionController::class, 'store']);
-    Route::put('ajax/transactions/{transaction}', [\App\Http\Controllers\Ajax\TransactionController::class, 'update']);
-    Route::delete('ajax/transactions/{transaction}', [\App\Http\Controllers\Ajax\TransactionController::class, 'destroy']);
+    Route::get('transactions/getAllPaginate', [\App\Http\Controllers\Bank\TransactionController::class, 'getAllPaginate'])->name('transactions.getAllPaginate');
+    Route::post('transactions', [\App\Http\Controllers\Bank\TransactionController::class, 'store'])->name('transactions.store');
+    Route::put('transactions/{transaction}', [\App\Http\Controllers\Bank\TransactionController::class, 'update'])->name('transactions.update');
+    Route::delete('transactions/{transaction}', [\App\Http\Controllers\Bank\TransactionController::class, 'destroy'])->name('transactions.destroy');
 });
