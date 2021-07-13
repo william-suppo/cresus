@@ -1,6 +1,8 @@
-## About Cresus
+# Cresus
 
-### How to start
+Cette application est une solution de comptabilité en partie double.
+
+### Comment lancer l'application ?
 
 ```bash
 # dev
@@ -10,7 +12,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
 
-### How to build
+### Comment construire son projet ?
 
 ```bash
 # composer
