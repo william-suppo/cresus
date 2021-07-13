@@ -1,12 +1,9 @@
-name: Run pipeline workflow
+name: Run test on new tag then deploy.
 
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+  create:
+    tags:
+      - v*
 
 jobs:
   test:
@@ -26,7 +23,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: test
-    if: github.ref == 'refs/heads/master'
 
     steps:
       - uses: actions/checkout@v2
