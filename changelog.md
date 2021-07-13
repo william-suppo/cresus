@@ -5,6 +5,8 @@ Tous les changements notables de cette application sont documenté ici.
 ## [non versionné]
 
 + [Elaboration du changelog. #22](https://github.com/william-suppo/cresus/issues/22)
++ [Harmonisation du code. #15](https://github.com/william-suppo/cresus/issues/15)
++ [Déclencher le déploiement uniquement suite à un tag. #27](https://github.com/william-suppo/cresus/issues/27)
 
 ## [v1.0.0] - 2021-07-12
 
