@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Bank;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Aggregator;
+use function view;
 
 class DashboardController extends Controller
 {
