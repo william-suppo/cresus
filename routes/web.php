@@ -25,6 +25,7 @@ Route::post('logout', [\App\Http\Controllers\Auth\AuthenticatedSessionController
     ->name('logout');
 
 Route::group(['middleware' => 'auth'],  function () {
+    Route::get('dashboard/{year?}', [\App\Http\Controllers\Bank\DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('transactions', [\App\Http\Controllers\Bank\TransactionController::class, 'index'])->name('transactions.index');
 
     Route::get('transactions/getAllPaginate', [\App\Http\Controllers\Bank\TransactionController::class, 'getAllPaginate'])->name('transactions.getAllPaginate');
