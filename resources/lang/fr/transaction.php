@@ -12,4 +12,6 @@ return [
     'transactions_order_by_most_recent_date' => 'Transactions ordonnées par date la plus récente',
     'edit_transaction' => "Edition d'une transaction",
 
+    'submit' => 'Envoyer',
+
 ];
