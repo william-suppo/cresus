@@ -4,15 +4,20 @@ Tous les changements notables de cette application sont documenté ici.
 
 ## [v2.0.0] - 2021-07-14
 
+### Ajout
+
 + [Elaboration du changelog. #22](https://github.com/william-suppo/cresus/issues/22)
++ [Elaboration du tableau de bord. #8](https://github.com/william-suppo/cresus/issues/8)
+
+### Changement
+
 + [Harmonisation du code. #15](https://github.com/william-suppo/cresus/issues/15)
 + [Déclencher le déploiement uniquement suite à un tag. #27](https://github.com/william-suppo/cresus/issues/27)
-+ [Elaboration du tableau de bord. #8](https://github.com/william-suppo/cresus/issues/8)
 + [Traduction de l'interface en français. #32](https://github.com/william-suppo/cresus/issues/32)
 
 ## [v1.0.0] - 2021-07-12
 
-### Ajouté
+### Ajout
 
 + [Edition de transactions. #1](https://github.com/william-suppo/cresus/issues/1)
 + [Suppression de transactions. #2](https://github.com/william-suppo/cresus/issues/2)
