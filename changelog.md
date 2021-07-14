@@ -8,6 +8,7 @@ Tous les changements notables de cette application sont documenté ici.
 + [Harmonisation du code. #15](https://github.com/william-suppo/cresus/issues/15)
 + [Déclencher le déploiement uniquement suite à un tag. #27](https://github.com/william-suppo/cresus/issues/27)
 + [Elaboration du tableau de bord. #8](https://github.com/william-suppo/cresus/issues/8)
++ [Traduction de l'interface en français. #32](https://github.com/william-suppo/cresus/issues/32)
 
 ## [v1.0.0] - 2021-07-12
 
