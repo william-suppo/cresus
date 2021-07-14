@@ -13,16 +13,17 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Identifiant ou mot de passe incorrect.',
+    'password' => 'Mot de passe incorrect.',
+    'throttle' => 'Trop de tentatives. Réessayer dans :seconds seconds.',
 
-    'sign_in_to_your_account' => 'Sign in to your account',
-    'sign_in' => 'Sign in',
-    'sign_out' => 'Sign out',
+    'sign_in_to_your_account' => 'Authentification',
+    'sign_in' => 'Connexion',
+    'sign_out' => 'Déconnexion',
 
     'fields' => [
         'email' => 'Email',
-        'password' => 'Password',
+        'password' => 'Mot de passe',
     ],
+
 ];
