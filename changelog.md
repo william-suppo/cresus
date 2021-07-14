@@ -2,7 +2,7 @@
 
 Tous les changements notables de cette application sont documenté ici.
 
-## [non versionné]
+## [v2.0.0] - 2021-07-14
 
 + [Elaboration du changelog. #22](https://github.com/william-suppo/cresus/issues/22)
 + [Harmonisation du code. #15](https://github.com/william-suppo/cresus/issues/15)
