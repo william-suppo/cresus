@@ -15,7 +15,7 @@
         <aside class="bg-white md:col-span-2 border-r-4 border-secondary">
             <div class="w-full text-center py-8 text-3xl text-primary uppercase font-semibold">{{ config('app.name', 'Laravel') }}</div>
             <nav class="text-white">
-                <a href="{{ route('dashboard.index') }}" class="{{ Request::is('dashboard') ? 'bg-secondary opacity-100 text-white' : 'text-secondary' }} flex items-center hover:bg-secondary hover:text-white py-4 pl-6">
+                <a href="{{ route('dashboard.index') }}" class="{{ Request::is('dashboard*') ? 'bg-secondary opacity-100 text-white' : 'text-secondary' }} flex items-center hover:bg-secondary hover:text-white py-4 pl-6">
                     <svg class="h-6 w-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                     </svg>

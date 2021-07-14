@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Bank;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Services\Aggregator;
-use function view;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
     public function __construct(protected Aggregator $aggregator) {}
 
-    public function index()
+    public function index(string $year = null): View
     {
-        $aggregate = $this->aggregator->getByYear(date('Y'));
+        $year = $year ?: date('Y');
 
-        return view('dashboard.index', compact('aggregate'));
+        $aggregate = $this->aggregator->getByYear($year);
+
+        return view('dashboard.index', compact('aggregate', 'year'));
     }
 }
