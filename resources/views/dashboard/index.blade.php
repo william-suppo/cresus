@@ -1,31 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-3xl font-extrabold text-blue-900 mb-6">Dashboard</h1>
+    <h1 class="text-3xl font-extrabold text-blue-900 mb-6">{{ __('dashboard.dashboard') }}</h1>
 
     <div class="mb-2 bg-white rounded shadow">
         <div class="flex items-center justify-between px-8 py-6">
             <h3 class="font-bold uppercase text-gray-700">
-                {{ __('Statistics of the year ') . $year }}
+                {{ __('dashboard.statistics_of_the_year', compact('year')) }}
             </h3>
         </div>
         <table class="table-fixed w-full">
             <thead class="uppercase text-gray-700 text-xs font-bold bg-gray-100 border-t border-gray-300 text-left">
                 <tr>
                     <th class="text-center py-2 w-1/6">&nbsp;</th>
-                    <th class="text-center py-2 w-1/12">{{ __('January') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('February') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('March') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('April') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('May') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('June') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('July') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('August') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('September') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('October') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('November') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('December') }}</th>
-                    <th class="text-center py-2 w-1/12">{{ __('Sum') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.january') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.february') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.march') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.april') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.may') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.june') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.july') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.august') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.september') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.october') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.november') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.december') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('dashboard.sum') }}</th>
                 </tr>
             </thead>
             <tbody>

@@ -19,7 +19,7 @@
                     <svg class="h-6 w-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                     </svg>
-                    {{ __('Dashboard') }}
+                    {{ __('menu.dashboard') }}
                 </a>
 {{--                <a href="#" class="{{ Request::is('accounts*') ? 'bg-blue-800 opacity-100 text-blue-900' : '' }} flex items-center opacity-80 hover:opacity-100 hover:bg-gray-100 hover:text-blue-900 py-4 pl-6">--}}
 {{--                    <svg class="h-6 w-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">--}}
@@ -31,7 +31,7 @@
                     <svg class="h-6 w-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
                     </svg>
-                    {{ __('Transactions') }}
+                    {{ __('menu.transactions') }}
                 </a>
             </nav>
         </aside>
@@ -40,7 +40,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <a onclick="event.preventDefault(); this.closest('form').submit();" href="{{ route('logout') }}" class="inline-block py-2 px-4 text-white bg-secondary hover:bg-primary rounded">{{ __('Sign out') }}</a>
+                    <a onclick="event.preventDefault(); this.closest('form').submit();" href="{{ route('logout') }}" class="inline-block py-2 px-4 text-white bg-secondary hover:bg-primary rounded">{{ __('auth.sign_out') }}</a>
                 </form>
             </header>
             <main class="w-full p-8">
