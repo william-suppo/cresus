@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-class AccountEntity
+class Account
 {
     public array $amounts = [];
 
