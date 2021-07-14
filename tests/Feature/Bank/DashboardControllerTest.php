@@ -33,7 +33,7 @@ class DashboardControllerTest extends TestCase
         $response = $this->actingAs($user)->get('/dashboard');
 
         $response->assertSuccessful()
-            ->assertSeeText('Statistics of the year 2021')
+            ->assertSeeText("Statistiques de l'année 2021")
             ->assertSee($debitAccount->name)
             ->assertSee($creditAccount->name);
     }
