@@ -25,7 +25,7 @@ class AuthenticatedSessionControllerTest extends TestCase
         ]);
 
         $this->assertAuthenticatedAs($user);
-        $response->assertRedirect('/transactions');
+        $response->assertRedirect('/dashboard');
     }
 
     /** @test */
@@ -65,14 +65,14 @@ class AuthenticatedSessionControllerTest extends TestCase
 
         $response = $this->actingAs($user)->get('/');
 
-        $response->assertRedirect('/transactions');
+        $response->assertRedirect('/dashboard');
 
         $response = $this
             ->from('/')
             ->actingAs($user)
             ->post('/login');
 
-        $response->assertRedirect('/transactions');
+        $response->assertRedirect('/dashboard');
     }
 
     /** @test */

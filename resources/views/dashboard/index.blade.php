@@ -13,19 +13,19 @@
             <thead class="uppercase text-gray-700 text-xs font-bold bg-gray-100 border-t border-gray-300 text-left">
                 <tr>
                     <th class="text-center py-2 w-1/6">&nbsp;</th>
-                    <th class="text-center py-2 w-1/12">Janvier</th>
-                    <th class="text-center py-2 w-1/12">Février</th>
-                    <th class="text-center py-2 w-1/12">Mars</th>
-                    <th class="text-center py-2 w-1/12">Avril</th>
-                    <th class="text-center py-2 w-1/12">Mai</th>
-                    <th class="text-center py-2 w-1/12">Juin</th>
-                    <th class="text-center py-2 w-1/12">Juillet</th>
-                    <th class="text-center py-2 w-1/12">Aout</th>
-                    <th class="text-center py-2 w-1/12">Septembre</th>
-                    <th class="text-center py-2 w-1/12">Octobre</th>
-                    <th class="text-center py-2 w-1/12">Novembre</th>
-                    <th class="text-center py-2 w-1/12">Décembre</th>
-                    <th class="text-center py-2 w-1/12">Total</th>
+                    <th class="text-center py-2 w-1/12">{{ __('January') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('February') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('March') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('April') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('May') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('June') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('July') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('August') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('September') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('October') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('November') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('December') }}</th>
+                    <th class="text-center py-2 w-1/12">{{ __('Sum') }}</th>
                 </tr>
             </thead>
             <tbody>
